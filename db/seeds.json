@@ -2,7 +2,13 @@
     {
         "name": "Malfoy",
         "age": 2,
-        "img":"malfoy.png"
+        "img":"malfoy.png",
+        "logs":[
+            {
+                "typeOfCare": "Medicine",
+                "entry": "gave medicine"
+            }
+        ]
     },              
     {
         "name": "Woolter White",

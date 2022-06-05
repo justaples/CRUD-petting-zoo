@@ -24,7 +24,7 @@ const createAnimal = (req,res) =>{
 const showAnimal = (req,res) =>{
     Animal.findById(req.params.animalId).then((a)=>{
         res.render('animals/showAnimal', {a})
-        console.log(a.img)
+        // console.log(a.img)
     })
 }
 
@@ -45,7 +45,13 @@ const updateAnimal = (req,res) =>{
 }
 
 const deleteAnimal = (req,res) =>{
-
+    Animal.findByIdAndDelete(req.params.animalId, (err, a)=>{
+        if (err){
+            res.status(400).json(err)
+            return
+        }
+        res.redirect('/animals')
+    })
 }
 
 
@@ -57,5 +63,5 @@ module.exports = {
     showAnimal,
     editAnimal,
     updateAnimal,
-    // deleteAnimal
+    deleteAnimal
 }

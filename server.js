@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');
 const animalRoutes = require('./routes/animalRoutes')
+const logRoutes = require('./routes/logRoutes')
 const Animal = require('./models/animals')
 
 require('./db/connection')
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(morgan('tiny'));
 app.use('/animals', animalRoutes);
+app.use('/', logRoutes);
 
 app.listen(PORT, () => {
     console.log(`✅ PORT: ${PORT} 🌟`);
