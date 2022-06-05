@@ -12,13 +12,13 @@ router.get('/new', animalCtrl.newAnimal)
 router.post('/', animalCtrl.createAnimal)
 
 // Show: GET /animals/:id 
-// router.get('/:animalId', animalCtrl.showAnimal)
+router.get('/:animalId', animalCtrl.showAnimal)
 
 // Edit: GET /animals/:id/edit 
-// router.get('/:animalId/edit', animalCtrl.editAnimal)
+router.get('/:animalId/edit', animalCtrl.editAnimal)
 
 // Update: PUT /animals/:id 
-// router.put('/:animalId', animalCtrl.updateAnimal)
+router.put('/:animalId', animalCtrl.updateAnimal)
 
 // Destroy: DELETE /animals/:id
 // router.delete('/:animalId', animalCtrl.deleteAnimal) 

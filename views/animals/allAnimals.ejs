@@ -13,11 +13,11 @@
     </form>
     <div class="animal">
         <% animals.forEach((a) => { %>
-            <ul>
-                <li><%= a.name %></li>
-                <li><%= a.age %></li>
+            
+                <a href="/animals/<%= a._id %>"><%= a.name %></a>
+                <%= a.age %>
                 <img src="<%= a.img %>" alt="">
-            </ul>
+            
             <% }) %>
     </div>
 </body>
