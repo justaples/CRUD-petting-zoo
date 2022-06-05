@@ -3,13 +3,13 @@ const router = express.Router();
 const animalCtrl = require('../controller/animalController');
 
 // Index: GET /animals 
-// router.get('/', animalCtrl.getAllAnimals)
+router.get('/', animalCtrl.getAllAnimals)
 
 // New: GET /animals/new 
-// router.get('/new', animalCtrl.newAnimal)
+router.get('/new', animalCtrl.newAnimal)
 
 // Create: POST /animals 
-// router.post('/', animalCtrl.createAnimal)
+router.post('/', animalCtrl.createAnimal)
 
 // Show: GET /animals/:id 
 // router.get('/:animalId', animalCtrl.showAnimal)
