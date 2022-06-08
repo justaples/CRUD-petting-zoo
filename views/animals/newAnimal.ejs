@@ -16,6 +16,12 @@
             <input type="submit" value="Add animal"><br>
             <form action="/animals">
                 <input type="submit" value="BACK" />
+            </form><br>
+            File upload:
+            
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input name="myImage" type="file">
+                <input type="submit" value="Upload image" />
             </form>
         </form>
 </body>

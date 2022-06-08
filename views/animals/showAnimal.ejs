@@ -24,7 +24,7 @@
 
 <form id="add-log" method="POST"
   action="/animals/<%= a._id %>/logs">
-  <label>Log:</label>
+  <!-- <label>Log:</label> -->
   <label>Type:</label>
   <select name="typeOfCare">
     <option value="Hygiene">Hygiene</option>
@@ -40,15 +40,23 @@
 <!-- update here / dont forget time stamp-->
 <%if(a.logs.length){%>
 <% a.logs.forEach((l)=>{%>
+    <%= l.typeOfCare %>
     <%= l.entry %>
+    <%= l.createdAt.toLocaleTimeString() %>
+    <%= l.createdAt.toLocaleDateString() %>
     <form action="/animals/<%= a._id %>/logs/<%=l._id%>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
       </form>
+
+      <!-- if remove comment below, make sure too remove spare between cherry tags -->
+
+    <!-- <form action="/animals/< %= a._id %>/logs/< %= l._id %>/editLog">
+        <input type="submit" value="Edit Log">
+    </form> -->
 <%}) %>
 
 <% } else { %>
 <h1>no logs yet</h1>
-
 
 <%}%>
 
