@@ -1,9 +1,9 @@
 img{
     width: 200px;
 }
-.animal{
+/* .animal{
     display: flex;
     flex-direction: row;
     border: 2px solid red;
-    /* width: 200px; */
-}
+    width: 200px;
+} */

@@ -9,20 +9,31 @@
 <body>
     <h1>Add new animal</h1>
     <div class="animal">
-        <form action="/animals" method="POST">
+        <form action="/animals" method="POST" enctype="multipart/form-data">
+           
             Name: <br><input name="name" type="text"><br>
             Age: <br><input name="age" type="text"><br>
-            Add a picture:<br><input name="img" type="text"><br>
-            <input type="submit" value="Add animal"><br>
+            Upload a picture:<br><input name="img" type="file"><br><br>
+            
+            <input type="submit" value="Add animal"><br><br>
+            
             <form action="/animals">
                 <input type="submit" value="BACK" />
-            </form><br>
-            File upload:
-            
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <input name="myImage" type="file">
-                <input type="submit" value="Upload image" />
             </form>
+
+            <!-- File upload:
+            
+            <form action="/uploads" method="POST" enctype="multipart/form-data">
+                <input name="img" type="file">
+                <input type="submit" value="Upload image" />
+            </form> -->
         </form>
-</body>
-</html>
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    

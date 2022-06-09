@@ -2,23 +2,12 @@
     {
         "name": "Malfoy",
         "age": 2,
-        "img":"malfoy.png",
-        "logs":[
-            {
-                "typeOfCare": "Medicine",
-                "entry": "gave medicine"
-            }
-        ]
+        "img":"malfoy.png"
     },              
     {
         "name": "Woolter White",
         "age": 5,
         "img":"woolter-white.jpeg"
-    },               
-    {
-        "name": "Lil' Sebastian",
-        "age": 5,
-        "img":"lil-sebastian.webp"
     },               
     {
         "name": "Chris P. Bacon",
@@ -29,6 +18,10 @@
         "name": "Freckles",
         "age": 5,
         "img":"deer.jpeg"
+    },               
+    {
+        "name": "Lil' Sebastian",
+        "age": 5,
+        "img":"lil-sebastian.webp"
     }               
 ]
- 
