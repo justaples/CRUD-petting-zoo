@@ -14,8 +14,8 @@
             Name: <br><input name="name" type="text"><br>
             Age: <br><input name="age" type="text"><br>
             Upload a picture:<br><input name="img" type="file"><br><br>
-            
             <input type="submit" value="Add animal"><br><br>
+            <%= typeof msg != 'undefined' ? msg : '' %> <br><br> 
             
             <form action="/animals">
                 <input type="submit" value="BACK" />

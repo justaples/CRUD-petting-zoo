@@ -6,9 +6,6 @@ const animalCtrl = require('../controller/animalController');
 
 router.get('/', animalCtrl.getAllAnimals)
 router.get('/new', animalCtrl.newAnimal)
-// router.post('/', animalCtrl.upload, animalCtrl.createAnimal)
-// router.post('/uploads', animalCtrl.uploadPic)
-// router.post('/upload', animalCtrl.upload)
 router.post('/', animalCtrl.createAnimal)
 router.get('/:animalId', animalCtrl.showAnimal)
 router.get('/:animalId/edit', animalCtrl.editAnimal)
