@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();   
-const host = '0.0.0.0'
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const multer = require('multer')
 const morgan = require('morgan');
 const path = require('path');
@@ -26,7 +25,7 @@ app.use(morgan('tiny'));
 app.use('/animals', animalRoutes);
 app.use('/', logRoutes);
 
-app.listen(PORT, host, () => {
+app.listen(PORT, () => {
     console.log(`✅ PORT: ${PORT} 🌟`);
 })
 
