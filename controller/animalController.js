@@ -4,17 +4,23 @@ const path = require('path');
 
 
 const getAllAnimals = (req,res) =>{
-    Animal.find({}, (err, animals)=>{
+    Animal.find({}, (err, a)=>{
         if(err){
             res.status(400).json(err)
             return
         }
-        res.render('animals/allAnimals', {animals, title: "Forrest & Friends Petting Zoo"})
+        res.render('animals/allAnimals', {a, title: "Forrest & Friends Petting Zoo"})
     })
 }
 
 const newAnimal = (req,res) =>{
-    res.render('animals/newAnimal')
+    Animal.find({}, (err, a)=>{
+        if(err){
+            res.status(400).json(err)
+            return
+        }
+        res.render('animals/newAnimal', {a, title: "Forrest & Friends Petting Zoo"})
+    })
 }
 // multer references - https://www.youtube.com/watch?v=9Qzmri1WaaE
 // https://www.youtube.com/watch?v=sUUgbcHm_3c
@@ -68,7 +74,7 @@ const createAnimal = (req,res) =>{
                 age: req.body.age,
                 img: req.file.filename,
             })
-            newAnimal.save(() => res.redirect('/animals'))
+            newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
             console.log(newAnimal)
         } catch (err){
             console.log(err)
@@ -88,7 +94,7 @@ const editAnimal = (req,res) =>{
             res.status(400).json(err)
             return
         }
-        res.render('animals/editAnimal', {a: a, id:req.params.animalId})
+        res.render('animals/editAnimal', {a: a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
     })
 }
 
