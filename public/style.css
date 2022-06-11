@@ -1,9 +1,19 @@
-img{
-    width: 200px;
+.animal-pic{
+    width: 400px;
 }
-/* .animal{
-    display: flex;
-    flex-direction: row;
-    border: 2px solid red;
-    width: 200px;
-} */
+.header{
+    background-image: url('yello.jpeg');
+    font-size: 30px;
+}
+
+.font{
+    font-size: 80px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.font-size{
+    font-size: 40px;
+}
+.home{
+    align-content: center;
+}

@@ -1,7 +1,6 @@
 const Animal = require('../models/animals')
 const multer = require('multer')
 const path = require('path');
-const { is } = require('express/lib/request');
 
 
 const getAllAnimals = (req,res) =>{
@@ -10,7 +9,7 @@ const getAllAnimals = (req,res) =>{
             res.status(400).json(err)
             return
         }
-        res.render('animals/allAnimals', {animals})
+        res.render('animals/allAnimals', {animals, title: "Forrest & Friends Petting Zoo"})
     })
 }
 
@@ -79,7 +78,7 @@ const createAnimal = (req,res) =>{
 
 const showAnimal = (req,res) =>{
     Animal.findById(req.params.animalId).then((a)=>{
-        res.render('animals/showAnimal', {a})
+        res.render('animals/showAnimal', {a, title: "Forrest & Friends Petting Zoo"})
     })
 }
 

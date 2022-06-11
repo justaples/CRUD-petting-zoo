@@ -16,17 +16,9 @@
             Upload a picture:<br><input name="img" type="file"><br><br>
             <input type="submit" value="Add animal"><br><br>
             <%= typeof msg != 'undefined' ? msg : '' %> <br><br> 
-            
-            <form action="/animals">
-                <input type="submit" value="BACK" />
-            </form>
-
-            <!-- File upload:
-            
-            <form action="/uploads" method="POST" enctype="multipart/form-data">
-                <input name="img" type="file">
-                <input type="submit" value="Upload image" />
-            </form> -->
+        </form>
+        <form action="/animals">
+            <input type="submit" value="BACK" />
         </form>
     </body>
     </html>
