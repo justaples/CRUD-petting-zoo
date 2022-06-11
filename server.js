@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();   
-const PORT = 3000;
-const multer = require('multer')
+const PORT = process.env.PORT || 3000;
+// const multer = require('multer')
 const morgan = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');
@@ -9,6 +9,7 @@ const animalRoutes = require('./routes/animalRoutes')
 const logRoutes = require('./routes/logRoutes')
 const Animal = require('./models/animals')
 
+require('dotenv').config({path:__dirname+'/.env'});
 require('./db/connection')
 
 app.set('views', path.join(__dirname, 'views'));
