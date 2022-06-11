@@ -8,19 +8,54 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+
     <title><%= title %> </title>
 </head>
 <body>
-        <div class="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a 
+        href="#" 
+        class="navbar-brand mb-0 h1">
+        
+        <%= title %>
+        </a>
+        <button
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        class="navbar-toggler"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link active">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">
+                        Add New Friend
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+        <!-- <div class="header">
             
             <nav class="navbar mt-0 m-5">
             <div class="container sm-6 m-3 ">
-                <div><h1 class="font"><%= title %> </h1></div>
-                <!-- <a href="animals/new">Add new Animal</a> -->
+                <div><h1 class="font">< %= title %> </h1></div>
                 <div class="buttons">
                     <div >
                         <form class="home" action="/animals">
@@ -33,6 +68,6 @@
                 </div>
             </div>
             </nav>  
-        </div>
+        </div> -->
 </body>
 </html>

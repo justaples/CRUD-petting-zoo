@@ -1,5 +1,6 @@
 require('./connection');
 
+
 const Animal = require('../models/animals');
 const animalSeeds =  require('./seeds.json')
 
