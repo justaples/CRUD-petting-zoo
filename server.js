@@ -9,7 +9,7 @@ const animalRoutes = require('./routes/animalRoutes')
 const logRoutes = require('./routes/logRoutes')
 const Animal = require('./models/animals')
 
-require('dotenv').config({path:__dirname+'/.env'});
+require('dotenv').config({});
 require('./db/connection')
 
 app.set('views', path.join(__dirname, 'views'));
