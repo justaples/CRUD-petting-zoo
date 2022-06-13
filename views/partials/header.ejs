@@ -53,17 +53,9 @@
                         aria-labelledby="navbarDropdown">
                         <% a.forEach((a)=>{ %>
                             <li>
-                                <% if (pathname === "/animals") { %>
-                                    <a href= "animals/<%= a._id %>" class="dropdown-item">
-                                        <%= a.name %> 
-                                    </a>
-                                    
-                                    <% } else { %>
-                                        <a href= "/animals/<%= a._id %>" class="dropdown-item">
-                                            <%= a.name %> 
-                                        </a>
-                                <% } %>
-
+                                <a href= "/animals/<%= a._id %>" class="dropdown-item">
+                                    <%= a.name %> 
+                                </a>
                             </li>
                             
                         <% }) %> 
