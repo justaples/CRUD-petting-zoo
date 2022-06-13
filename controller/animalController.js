@@ -1,15 +1,36 @@
 const Animal = require('../models/animals')
 const multer = require('multer')
 const path = require('path');
+const passport = require('passport')
+const url = require('url');
 
+// const login = (req, res)=>{
+//     passport.authenticate('google', {scope:['email', 'profile']})
+//         // res.render('animals/login', {title:'Forrest & Friends Petting Zoo'})
+// }
+
+// const loginPost = (req,res)=>{
+//     let token = req.body.token
+//     console.log(token)
+// }
+
+
+const fullUrl = (req) => {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+});
+}
 
 const getAllAnimals = (req,res) =>{
     Animal.find({}, (err, a)=>{
+        console.log(req.originalUrl)
         if(err){
             res.status(400).json(err)
             return
         }
-        res.render('animals/allAnimals', {a, title: "Forrest & Friends Petting Zoo"})
+        res.render('animals/allAnimals', {pathname:req.originalUrl, a, title: "Forrest & Friends Petting Zoo"})
     })
 }
 
@@ -19,7 +40,7 @@ const newAnimal = (req,res) =>{
             res.status(400).json(err)
             return
         }
-        res.render('animals/newAnimal', {a, title: "Forrest & Friends Petting Zoo"})
+        res.render('animals/newAnimal', {pathname:req.originalUrl, a, title: "Forrest & Friends Petting Zoo"})
     })
 }
 // multer references - https://www.youtube.com/watch?v=9Qzmri1WaaE
@@ -74,7 +95,7 @@ const createAnimal = (req,res) =>{
                 age: req.body.age,
                 img: req.file.filename,
             })
-            newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
+            newAnimal.save(() => res.redirect('/animals'), {pathname:req.originalUrl, title: "Forrest & Friends Petting Zoo"})
             console.log(newAnimal)
         } catch (err){
             console.log(err)
@@ -83,21 +104,20 @@ const createAnimal = (req,res) =>{
 }
 
 const showAnimal = (req,res) =>{
-    Animal.findById(req.params.animalId).then((a)=>{
-        res.render('animals/showAnimal', {a, title: "Forrest & Friends Petting Zoo"})
+    Animal.findById(req.params.animalId).then((animal)=>{
+        Animal.find({},(err, a) =>{
+            res.render('animals/showAnimal', {pathname:req.originalUrl, a, animal, title: "Forrest & Friends Petting Zoo"})
+        })
     })
 }
 
 const editAnimal = (req,res) =>{
-    Animal.findById(req.params.animalId, (err, a)=>{
-        if(err){
-            res.status(400).json(err)
-            return
-        }
-        res.render('animals/editAnimal', {a: a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
+    Animal.findById(req.params.animalId, (err, animal)=>{
+        Animal.find({},(err, a) =>{
+            res.render('animals/editAnimal', {pathname:req.originalUrl, animal, a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
     })
+})
 }
-
 const updateAnimal = (req,res) =>{
     Animal.findByIdAndUpdate(req.params.animalId, req.body, {new:true}).then((a)=>{
         res.redirect(`/animals/${req.params.animalId}`)
@@ -117,6 +137,8 @@ const deleteAnimal = (req,res) =>{
 
 
 module.exports = {
+    // login,
+    // loginPost,
     getAllAnimals,
     newAnimal,
     createAnimal,

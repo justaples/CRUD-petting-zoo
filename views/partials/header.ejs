@@ -7,8 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Secular+One&display=swap" rel="stylesheet">
     <title><%= title %> </title>
 </head>
 <!-- Navbar styling: https://www.youtube.com/watch?v=qNifU_aQRio -->
@@ -17,7 +16,8 @@
             <div class="container">
             <a 
             href="#" 
-            class="navbar-brand mb-0 h1">
+            class="navbar-brand mb-0 h1"
+            style="font-family: 'Dancing Script', cursive; font-size: 35px;">
             
             <%= title %>
             </a>
@@ -40,7 +40,7 @@
                             Home
                         </a>
                     </li>
-                    <!-- <li class="nav-item dropdown active">
+                    <li class="nav-item dropdown active">
                         <a href="#" 
                         class="nav-link dropdown-toggle"
                         id="navbarDropdown"
@@ -51,17 +51,24 @@
                         </a>
                         <ul class="dropdown-menu"
                         aria-labelledby="navbarDropdown">
-                        < % a.forEach((a)=>{ %>
-
+                        <% a.forEach((a)=>{ %>
                             <li>
-                                <a href="< %= a._id %>" class="dropdown-item">
-                                    < %= a.name %> 
-                                </a>
+                                <% if (pathname === "/animals") { %>
+                                    <a href= "animals/<%= a._id %>" class="dropdown-item">
+                                        <%= a.name %> 
+                                    </a>
+                                    
+                                    <% } else { %>
+                                        <a href= "/animals/<%= a._id %>" class="dropdown-item">
+                                            <%= a.name %> 
+                                        </a>
+                                <% } %>
+
                             </li>
                             
-                        < % }) %> 
+                        <% }) %> 
                         </ul>
-                    </li> -->
+                    </li>
                     <li class="nav-item">
                         <a href="/animals/new" 
                             class="nav-link active">

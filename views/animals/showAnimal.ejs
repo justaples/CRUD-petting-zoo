@@ -5,16 +5,17 @@
         <div class="card mb-3" >
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img class="img-fluid animal-pic" src="/<%= a.img %>" alt="">
+                    <img class="img-fluid animal-pic" src="/<%= animal.img %>" alt="">
                 </div>
                 <div class="col-md-8 text-center">
-                    <div class="card-body"></div>
-                    <h1><%=a.name%></h1>
-                    <h1>Age: <%=a.age%></h1>
-                    <form action="/animals/<%= a._id %>/edit">
+                    <div class="card-body">
+                        <h1><%=animal.name%></h1>
+                        <h1>Age: <%=animal.age%></h1>
+                    </div>
+                    <form action="/animals/<%= animal._id %>/edit">
                         <input type="submit" value="Edit">
                     </form>
-                    <form action="/animals/<%= a._id %>?_method=DELETE" method="POST">
+                    <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
                         <input type="submit" value="Delete">
                     </form>
                 </div>
@@ -22,9 +23,10 @@
         </div>
 
 
+
         <!-- Logs area -->
         <form id="add-log" method="POST"
-        action="/animals/<%= a._id %>/logs">
+        action="/animals/<%= animal._id %>/logs">
         <!-- <label>Log:</label> -->
         <label>Type:</label>
         <select name="typeOfCare">
@@ -39,13 +41,13 @@
     
     
     <!-- update here / dont forget time stamp-->
-    <%if(a.logs.length){%>
-        <% a.logs.forEach((l)=>{%>
+    <%if(animal.logs.length){%>
+        <% animal.logs.forEach((l)=>{%>
             <%= l.typeOfCare %>
             <%= l.entry %>
             <%= l.createdAt.toLocaleTimeString() %>
             <%= l.createdAt.toLocaleDateString() %>
-            <form action="/animals/<%= a._id %>/logs/<%=l._id%>?_method=DELETE" method="POST">
+            <form action="/animals/<%= animal._id %>/logs/<%=l._id%>?_method=DELETE" method="POST">
                 <input type="submit" value="Delete">
             </form>
         <%}) %>

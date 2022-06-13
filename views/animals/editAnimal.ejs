@@ -1,8 +1,8 @@
 <%- include('../partials/header.ejs')  %> 
 <body>
     <form method="POST" action="/animals/<%= id %>?_method=PUT">
-        Name: <input name="name" type="text" value="<%=a.name%>"><br>
-        Age: <input name="age" type="number"value="<%=a.age%>"><br>
+        Name: <input name="name" type="text" value="<%=animal.name%>"><br>
+        Age: <input name="age" type="number"value="<%=animal.age%>"><br>
         
         <input type="submit" value="Update!">
     </form>
