@@ -49,8 +49,8 @@ app.get('/', (req,res)=>{
 
 app.use(morgan('tiny'));
 
-app.use('/', oauthRoutes);
 app.use('/animals', animalRoutes);
+app.use('/', oauthRoutes);
 app.use('/', logRoutes);
 
 
