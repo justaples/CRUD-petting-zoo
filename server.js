@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8080;
 const morgan = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');
+const oauthRoutes = require('./routes/oauth');
 const animalRoutes = require('./routes/animalRoutes')
 const logRoutes = require('./routes/logRoutes')
 const Animal = require('./models/animals')
@@ -35,11 +36,18 @@ app.use(passport.session());
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
 app.get('/', (req,res)=>{
-    res.redirect('/animals')
+    res.render('animals/home')
 })
 
+// app.get('/', (req,res)=>{
+//     res.redirect('/animals')
+// })
+
 app.use(morgan('tiny'));
+
+app.use('/', oauthRoutes);
 app.use('/animals', animalRoutes);
 app.use('/', logRoutes);
 

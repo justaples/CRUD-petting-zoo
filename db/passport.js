@@ -7,10 +7,10 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK,
-    passReqToCallback: true
+    // passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
+  function(accessToken, refreshToken, profile, cb) {
+    return cb(null, profile);
   }
 ));
 

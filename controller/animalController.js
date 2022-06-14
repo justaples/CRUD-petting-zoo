@@ -13,8 +13,11 @@ const passport = require('passport')
 //     console.log(token)
 // }
 
+// const isLoggedIn = (req, res, next)=>{
+//     req.user ? next() : res.status(401);
+// }
 
-
+// isLoggedIn()
 const getAllAnimals = (req,res) =>{
     Animal.find({}, (err, a)=>{
         if(err){
@@ -82,6 +85,7 @@ const createAnimal = (req,res) =>{
         }
         try{
             let newAnimal = new Animal({
+            
                 name: req.body.name,
                 age: req.body.age,
                 img: req.file.filename,
@@ -130,6 +134,7 @@ const deleteAnimal = (req,res) =>{
 module.exports = {
     // login,
     // loginPost,
+    // isLoggedIn,
     getAllAnimals,
     newAnimal,
     createAnimal,
