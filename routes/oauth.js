@@ -4,11 +4,18 @@ const passport = require('passport')
 
 //reference https://www.youtube.com/watch?v=Q0a0594tOrc
 
-const isLoggedIn = (req, res, next)=>{
-    req.user ? next() : res.status(401);
-}
+// const isLoggedIn = (req, res, next)=>{
+//     req.user ? next() : res.status(401);
+// }
 
-router.get('/', isLoggedIn, function(req, res) {
+
+router.get('/home', (req,res)=>{
+
+  res.render('animals/home')
+  // res.redirect('/home')
+})
+
+router.get('/', function(req, res) {
     
     // console.log(req.user)
     res.redirect('/animals');
