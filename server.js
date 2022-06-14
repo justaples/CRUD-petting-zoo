@@ -37,15 +37,15 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.get('/', (req,res)=>{
-
-    res.render('animals/home')
-    res.redirect('/')
-})
-
 // app.get('/', (req,res)=>{
-//     res.redirect('/animals')
+
+//     res.render('animals/home')
+//     res.redirect('/')
 // })
+
+app.get('/', (req,res)=>{
+    res.redirect('/animals')
+})
 
 app.use(morgan('tiny'));
 
