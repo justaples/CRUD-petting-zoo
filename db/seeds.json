@@ -2,26 +2,32 @@
     {
         "name": "Malfoy",
         "age": 2,
-        "img":"malfoy.png"
+        "description": "Miniature Horse",
+        "img":"malfoy.png",
+        "logs":["Medicine", "gave him medicine"]
     },              
     {
         "name": "Woolter White",
         "age": 5,
+        "description": "Miniature Horse",
         "img":"woolter-white.jpeg"
     },               
     {
         "name": "Chris P. Bacon",
         "age": 5,
+        "description": "Miniature Horse",
         "img":"chris-p-bacon.jpeg"
     },               
     {
         "name": "Freckles",
         "age": 5,
+        "description": "Miniature Horse",
         "img":"deer.jpeg"
     },               
     {
         "name": "Lil' Sebastian",
         "age": 5,
+        "description": "Miniature Horse",
         "img":"little-sebastian.jpeg"
     }               
 ]

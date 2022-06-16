@@ -11,6 +11,7 @@
                 <div class="card-body">
                     <h1><%=animal.name%></h1>
                     <h1>Age: <%=animal.age%></h1>
+                    <h1>Description: <%=animal.description%></h1>
                 </div>
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Edit
@@ -36,6 +37,8 @@
                     <input name="name" type="text" value="<%=animal.name%>">
                     <h5><br>Age:</h5>
                     <input name="age" type="number"value="<%=animal.age%>">
+                    <h5><br>Description:</h5>
+                    <input name="description" type="text"value="<%=animal.description%>">
                     
                     <div class="modal-footer">
                     <input class="btn btn-dark" type="submit" value="Update!">
@@ -75,7 +78,7 @@ action="/animals/<%= animal._id %>/logs">
         </form>
     <%}) %>
 <% } else { %>
-            <h1>no logs yet</h1>
+    <h1>no logs yet</h1>
 <%}%>
 </div>
 

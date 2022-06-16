@@ -11,6 +11,7 @@ const logSchema = new Schema({
 const animalSchema = new Schema({
     name: { type: String, required: true},
     age: Number,
+    description: String,
     img: String,
     logs: [logSchema]
 },{

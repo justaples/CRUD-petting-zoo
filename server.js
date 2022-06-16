@@ -37,7 +37,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(function (req, res, next) {
     res.locals.user = req.user;
-    console.log(req.user)
+    // console.log(req.user)
     next();
   });
 
