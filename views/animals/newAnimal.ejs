@@ -1,15 +1,29 @@
 <%- include('../partials/header.ejs')  %> 
 <body>
-    <h1>Add new animal</h1>
-    <div class="animal">
-        <form action="/animals" method="POST" enctype="multipart/form-data">
-           
-            Name: <br><input name="name" type="text"><br>
-            Age: <br><input name="age" type="text"><br>
-            Upload a picture:<br><input name="img" type="file"><br><br>
-            <input type="submit" value="Add animal"><br><br>
-            <%= typeof msg != 'undefined' ? msg : '' %> <br><br> 
-        </form>
+    <div class="container" style="max-width: 50%;">
+            <div class="row" style=" border:5px solid black; border-radius: 10%;margin:30px 0px 0px 0px; padding: 5px">
+                <h1 class="mt-3"style="border-bottom: 2px solid black;" >Add new animal</h1>
+                <form action="/animals" method="POST" enctype="multipart/form-data">
+                    <p style="font-size: 25px"><br>
+                    Name: 
+                    </p>
+                    <input name="name" class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"><br>
+                    <p style="font-size: 25px">
+                    Age: 
+                    </p> 
+                    <input name="age" class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"><br>
+                    <!-- Name: <br><input name="name" type="text"><br><br>
+                        Age: <br><input name="age" type="text"><br><br> -->
+                        <div class="mb-3">
+                            <label for="formFileLg" class="form-label" style="font-size: 25px;">Upload a picture:</label>
+                            <input class="form-control form-control-lg" name="img" type="file" id="formFileLg" >
+                        </div>
+                        <!-- Upload a picture:<br><input name="img" type="file"><br><br> -->
+                        <input class="btn btn-dark btn-lg" type="submit" value="Add animal">
+                        <%= typeof msg != 'undefined' ? msg : '' %> <br><br> 
+                    </form>
+            </div>
+    </div>
         
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

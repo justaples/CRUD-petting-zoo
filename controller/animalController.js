@@ -3,21 +3,7 @@ const multer = require('multer')
 const path = require('path');
 const passport = require('passport')
 
-// const login = (req, res)=>{
-//     passport.authenticate('google', {scope:['email', 'profile']})
-//         // res.render('animals/login', {title:'Forrest & Friends Petting Zoo'})
-// }
 
-// const loginPost = (req,res)=>{
-//     let token = req.body.token
-//     console.log(token)
-// }
-
-// const isLoggedIn = (req, res, next)=>{
-//     req.user ? next() : res.status(401);
-// }
-
-// isLoggedIn()
 const getAllAnimals = (req,res) =>{
     Animal.find({}, (err, a)=>{
         if(err){
@@ -59,7 +45,7 @@ const upload = multer({
     }).single('img')
 
 function checkFileType(file, cb){
-    const fileTypes = /jpeg|jpg|png|gif/
+    const fileTypes = /jpeg|jpg|png|gif|webp/
     const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
     const mimeType = fileTypes.test(file.mimetype)
 
@@ -72,47 +58,46 @@ function checkFileType(file, cb){
 
 const createAnimal = (req,res) =>{
     upload(req,res,(err)=>{
-        if(err){
-            res.render('animals/newAnimal',{
-                msg:err
-            })
-        }else{
-            if(req.file == undefined){
-                res.render('animals/newAnimal',{
-                    msg: 'Please select a file!'
-                })
+        Animal.find({}, (e,a)=>{
+            if(err){
+                res.render('animals/newAnimal', 
+                {msg:err, a, title: "Forrest & Friends Petting Zoo"})
+            }else{
+                if(req.file == undefined){
+                    res.render('animals/newAnimal', 
+                    {msg: 'Please select a picture!', a, title: "Forrest & Friends Petting Zoo"})
+                }
             }
-        }
-        try{
-            let newAnimal = new Animal({
-            
-                name: req.body.name,
-                age: req.body.age,
-                img: req.file.filename,
-            })
-            newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
-            console.log(newAnimal)
-        } catch (err){
-            console.log(err)
-        }
+            try{
+                let newAnimal = new Animal({
+                    name: req.body.name,
+                    age: req.body.age,
+                    img: req.file.filename,
+                })
+                newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
+                console.log(newAnimal)
+            } catch (err){
+                console.log(err)
+            }
+        })
     })
 }
 
 const showAnimal = (req,res) =>{
     Animal.findById(req.params.animalId).then((animal)=>{
         Animal.find({},(err, a) =>{
-            res.render('animals/showAnimal', {a, animal, title: "Forrest & Friends Petting Zoo"})
+            res.render('animals/showAnimal', {a, animal, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
         })
     })
 }
 
-const editAnimal = (req,res) =>{
-    Animal.findById(req.params.animalId, (err, animal)=>{
-        Animal.find({},(err, a) =>{
-            res.render('animals/editAnimal', {animal, a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
-    })
-})
-}
+// const editAnimal = (req,res) =>{
+//     Animal.findById(req.params.animalId, (err, animal)=>{
+//         Animal.find({},(err, a) =>{
+//             res.render('animals/editAnimal', {animal, a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
+//     })
+// })
+// }
 const updateAnimal = (req,res) =>{
     Animal.findByIdAndUpdate(req.params.animalId, req.body, {new:true}).then((a)=>{
         res.redirect(`/animals/${req.params.animalId}`)
@@ -132,14 +117,11 @@ const deleteAnimal = (req,res) =>{
 
 
 module.exports = {
-    // login,
-    // loginPost,
-    // isLoggedIn,
     getAllAnimals,
     newAnimal,
     createAnimal,
     showAnimal,
-    editAnimal,
+    // editAnimal,
     updateAnimal,
     deleteAnimal
 }

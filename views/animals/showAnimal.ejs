@@ -1,61 +1,86 @@
 <%- include('../partials/header.ejs')  %> 
 <body>
-    <div class="container-sm">
+<div class="container-sm">
 
-        <div class="card mb-3" >
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid animal-pic" src="/<%= animal.img %>" alt="">
+    <div class="card mb-3" >
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img class="img-fluid animal-pic" src="/<%= animal.img %>" alt="">
+            </div>
+            <div class="col-md-8 text-center">
+                <div class="card-body">
+                    <h1><%=animal.name%></h1>
+                    <h1>Age: <%=animal.age%></h1>
                 </div>
-                <div class="col-md-8 text-center">
-                    <div class="card-body">
-                        <h1><%=animal.name%></h1>
-                        <h1>Age: <%=animal.age%></h1>
-                    </div>
-                    <form action="/animals/<%= animal._id %>/edit">
-                        <input type="submit" value="Edit">
-                    </form>
-                    <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete">
-                    </form>
-                </div>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Edit
+                </button>
+                <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
+                    <input class="btn btn-dark" type="submit" value="Delete">
+                </form>
             </div>
         </div>
+    </div>
 
-
-
-        <!-- Logs area -->
-        <form id="add-log" method="POST"
-        action="/animals/<%= animal._id %>/logs">
-        <!-- <label>Log:</label> -->
-        <label>Type:</label>
-        <select name="typeOfCare">
-            <option value="Hygiene">Hygiene</option>
-            <option value="Diet">Diet</option>
-            <option value="Vet">Vet Appointment</option>
-            <option value="Medicine">Medicine</option>
-        </select>
-        <textarea name="entry"></textarea>
-        <input type="submit" value="Add Log">
-    </form>
-    
-    
-    <!-- update here / dont forget time stamp-->
-    <%if(animal.logs.length){%>
-        <% animal.logs.forEach((l)=>{%>
-            <%= l.typeOfCare %>
-            <%= l.entry %>
-            <%= l.createdAt.toLocaleTimeString() %>
-            <%= l.createdAt.toLocaleDateString() %>
-            <form action="/animals/<%= animal._id %>/logs/<%=l._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete">
-            </form>
-        <%}) %>
-    <% } else { %>
-                <h1>no logs yet</h1>
-    <%}%>
+    <!-- EDIT ANIMAL MODAL START -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Edit animal's information</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+            <div class="modal-body">
+                <form method="POST" action="/animals/<%= id %>?_method=PUT">
+                    <h5>Name:</h5>
+                    <input name="name" type="text" value="<%=animal.name%>">
+                    <h5><br>Age:</h5>
+                    <input name="age" type="number"value="<%=animal.age%>">
+                    
+                    <div class="modal-footer">
+                    <input class="btn btn-dark" type="submit" value="Update!">
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- END OF MODAL -->
+
+<!-- Logs area -->
+<form id="add-log" method="POST"
+action="/animals/<%= animal._id %>/logs">
+<!-- <label>Log:</label> -->
+<label>Type:</label>
+<select name="typeOfCare">
+    <option value="Hygiene">Hygiene</option>
+    <option value="Diet">Diet</option>
+    <option value="Vet">Vet Appointment</option>
+    <option value="Medicine">Medicine</option>
+</select>
+<textarea name="entry"></textarea>
+<input type="submit" value="Add Log">
+</form>
+    
+    
+<!-- update here / dont forget time stamp-->
+<%if(animal.logs.length){%>
+    <% animal.logs.forEach((l)=>{%>
+        <%= l.typeOfCare %>
+        <%= l.entry %>
+        <%= l.createdAt.toLocaleTimeString() %>
+        <%= l.createdAt.toLocaleDateString() %>
+        <form action="/animals/<%= animal._id %>/logs/<%=l._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    <%}) %>
+<% } else { %>
+            <h1>no logs yet</h1>
+<%}%>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
 <%- include('../partials/footer.ejs')  %>

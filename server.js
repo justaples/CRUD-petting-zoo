@@ -11,18 +11,16 @@ const logRoutes = require('./routes/logRoutes')
 const Animal = require('./models/animals')
 const session = require('express-session')
 const passport = require('passport')
-// const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 require('dotenv').config({path:__dirname+'/.env'});
 require('./db/connection')
 require('./db/passport');
 
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 // app.use(express.json())
-// app.use(cookieParser())
+app.use(cookieParser())
 
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
@@ -37,13 +35,13 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-// app.get('/home', (req,res)=>{
+app.use(function (req, res, next) {
+    res.locals.user = req.user;
+    console.log(req.user)
+    next();
+  });
 
-//     res.render('animals/home')
-//     // res.redirect('/home')
-// })
-
-app.get('/', (req,res)=>{
+  app.get('/', (req,res)=>{
     res.redirect('/home')
 })
 
@@ -52,7 +50,6 @@ app.use(morgan('tiny'));
 app.use('/animals', animalRoutes);
 app.use('/', oauthRoutes);
 app.use('/', logRoutes);
-
 
 app.listen(PORT, () => {
     console.log(`✅ PORT: ${PORT} 🌟`);
