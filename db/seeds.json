@@ -4,30 +4,34 @@
         "age": 2,
         "description": "Miniature Horse",
         "img":"malfoy.png",
-        "logs":["Medicine", "gave him medicine"]
+        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
     },              
     {
         "name": "Woolter White",
         "age": 5,
         "description": "Miniature Horse",
-        "img":"woolter-white.jpeg"
+        "img":"woolter-white.jpeg",
+        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
     },               
     {
         "name": "Chris P. Bacon",
         "age": 5,
         "description": "Miniature Horse",
-        "img":"chris-p-bacon.jpeg"
+        "img":"chris-p-bacon.jpeg",
+        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
     },               
     {
         "name": "Freckles",
         "age": 5,
         "description": "Miniature Horse",
-        "img":"deer.jpeg"
+        "img":"deer.jpeg",
+        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
     },               
     {
         "name": "Lil' Sebastian",
         "age": 5,
         "description": "Miniature Horse",
-        "img":"little-sebastian.jpeg"
+        "img":"little-sebastian.jpeg",
+        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
     }               
 ]

@@ -4,9 +4,9 @@ const animalCtrl = require('../controller/animalController');
 
 
 router.get('/', isLoggedIn, animalCtrl.getAllAnimals)
-router.get('/new', animalCtrl.newAnimal)
+router.get('/new', isLoggedIn, animalCtrl.newAnimal)
 router.post('/', animalCtrl.createAnimal)
-router.get('/:animalId', animalCtrl.showAnimal)
+router.get('/:animalId', isLoggedIn, animalCtrl.showAnimal)
 // router.get('/:animalId/edit', animalCtrl.editAnimal) --->> THIS WILL PROBABLY BE DELETED
 router.put('/:animalId', animalCtrl.updateAnimal)
 router.delete('/:animalId', animalCtrl.deleteAnimal) 
