@@ -3,7 +3,9 @@ const multer = require('multer')
 const path = require('path');
 const passport = require('passport')
 
-
+/*=======================================================================
+Function created to display all animals on main page
+=======================================================================*/
 const getAllAnimals = (req,res) =>{
     Animal.find({}, (err, a)=>{
         if(err){
@@ -14,6 +16,9 @@ const getAllAnimals = (req,res) =>{
     })
 }
 
+/*=======================================================================
+Function created to display the form to add a new animal into database
+=======================================================================*/
 const newAnimal = (req,res) =>{
     Animal.find({}, (err, a)=>{
         if(err){
@@ -23,32 +28,40 @@ const newAnimal = (req,res) =>{
         res.render('animals/newAnimal', {a, title: "Forrest & Friends Petting Zoo"})
     })
 }
-// multer references - https://www.youtube.com/watch?v=9Qzmri1WaaE
-// https://www.youtube.com/watch?v=sUUgbcHm_3c
-// https://www.youtube.com/watch?v=nvSVZW2x8BQ&t=876s
-// https://www.youtube.com/watch?v=nvSVZW2x8BQ
- 
+
+/*=======================================================================
+Multer references:
+https://www.youtube.com/watch?v=9Qzmri1WaaE
+https://www.youtube.com/watch?v=sUUgbcHm_3c
+https://www.youtube.com/watch?v=nvSVZW2x8BQ&t=876s
+https://www.youtube.com/watch?v=nvSVZW2x8BQ
+=======================================================================*/ 
 const storage = multer.diskStorage({
     destination:'./public',
     filename: function(req, file, cb){
-        console.log(file.originalname)
         cb(null, Date.now() + file.originalname)
     }
 });
 
+/*=======================================================================
+Handling the upload of files into the app: Max Size, File type
+=======================================================================*/ 
 const upload = multer({
     storage: storage,
     limits: {fileSize: 1000000},
     fileFilter: function(req, file, cb){
         checkFileType(file, cb)
     }
-    }).single('img')
+}).single('img')
 
+/*=======================================================================
+Function to allow only images to be uploaded
+=======================================================================*/ 
 function checkFileType(file, cb){
     const fileTypes = /jpeg|jpg|png|gif|webp/
     const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
     const mimeType = fileTypes.test(file.mimetype)
-
+    
     if (mimeType && extName){
         return cb(null, true)
     } else {
@@ -56,6 +69,11 @@ function checkFileType(file, cb){
     }
 }
 
+/*=======================================================================
+Following function adds the new animal into database
+Multer adapted into the function 
+Error message was added in case no file is selected
+=======================================================================*/ 
 const createAnimal = (req,res) =>{
     upload(req,res,(err)=>{
         Animal.find({}, (e,a)=>{
@@ -76,7 +94,6 @@ const createAnimal = (req,res) =>{
                     img: req.file.filename,
                 })
                 newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
-                console.log(newAnimal)
             } catch (err){
                 console.log(err)
             }
@@ -84,27 +101,32 @@ const createAnimal = (req,res) =>{
     })
 }
 
+/*=======================================================================
+Following function displays the selected animal on screen by its ID
+=======================================================================*/ 
 const showAnimal = (req,res) =>{
     Animal.findById(req.params.animalId).then((animal)=>{
+        /*=======================================================================
+        Animal.find was added below so the header can display all animals on the dropdown
+        =======================================================================*/ 
         Animal.find({},(err, a) =>{
             res.render('animals/showAnimal', {a, animal, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
         })
     })
 }
 
-// const editAnimal = (req,res) =>{
-//     Animal.findById(req.params.animalId, (err, animal)=>{
-//         Animal.find({},(err, a) =>{
-//             res.render('animals/editAnimal', {animal, a, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
-//     })
-// })
-// }
+/*=======================================================================
+Following function updates animal information entered into the edit form
+=======================================================================*/ 
 const updateAnimal = (req,res) =>{
     Animal.findByIdAndUpdate(req.params.animalId, req.body, {new:true}).then((a)=>{
         res.redirect(`/animals/${req.params.animalId}`)
     })
 }
 
+/*=======================================================================
+Following function deletes animal from database
+=======================================================================*/ 
 const deleteAnimal = (req,res) =>{
     Animal.findByIdAndDelete(req.params.animalId, (err, a)=>{
         if (err){
@@ -116,13 +138,14 @@ const deleteAnimal = (req,res) =>{
 }
 
 
-
+/*=======================================================================
+Exporting all functions
+=======================================================================*/ 
 module.exports = {
     getAllAnimals,
     newAnimal,
     createAnimal,
     showAnimal,
-    // editAnimal,
     updateAnimal,
     deleteAnimal
 }

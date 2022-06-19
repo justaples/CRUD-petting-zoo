@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 const logCtrl = require('../controller/logController')
 
+/*=======================================================================
+Log routes connected to the log controller file
+=======================================================================*/
 
-
-// Create: POST /animals/:animalsId/logs
 router.post('/animals/:animalId/logs', logCtrl.newLog)
-// Destroy: DELETE /animals/:animalsId/logs/:logsId 
 router.delete('/animals/:animalId/logs/:logId', logCtrl.deleteLog)
 
 
