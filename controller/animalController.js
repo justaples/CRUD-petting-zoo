@@ -72,6 +72,7 @@ const createAnimal = (req,res) =>{
                 let newAnimal = new Animal({
                     name: req.body.name,
                     age: req.body.age,
+                    description: req.body.description,
                     img: req.file.filename,
                 })
                 newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})

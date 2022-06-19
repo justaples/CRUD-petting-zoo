@@ -2,36 +2,35 @@
     {
         "name": "Malfoy",
         "age": 2,
-        "description": "Miniature Horse",
+        "description": "Date of birth: 12/30/2019. Adorable Albino Ferret. Pink nose, ruby red eyes ♥",
         "img":"malfoy.png",
-        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
+        "logs":[{"typeOfCare": "Diet", "entry":"Malfoy was given a mouse, ate right away. His water bowl was cleaned and filled with fresh water."}]
     },              
     {
         "name": "Woolter White",
         "age": 5,
-        "description": "Miniature Horse",
+        "description": "Date of birth: 01/25/2017. Irish pedigree sheep.  ",
         "img":"woolter-white.jpeg",
-        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
+        "logs":[{"typeOfCare": "Hygiene", "entry":"Hooves maintenance: Dug out dirt, trimmed away excess nail."}]
     },               
     {
         "name": "Chris P. Bacon",
-        "age": 5,
-        "description": "Miniature Horse",
+        "age": 1,
+        "description": "Date of Birth: 11/26/2020. Stout-bodied, short-legged, omnivorous mammals, with thick skin sparsely coated with short bristles",
         "img":"chris-p-bacon.jpeg",
-        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
+        "logs":[{"typeOfCare": "Vet Appointment", "entry":"Feces sample collected. Skin scraping was done, sample sent to lab."}]
     },               
     {
         "name": "Freckles",
-        "age": 5,
-        "description": "Miniature Horse",
-        "img":"deer.jpeg",
-        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
+        "age": 1,
+        "description": "Date of birth: 06/17/2021",
+        "img":"deer.jpeg"
     },               
     {
         "name": "Lil' Sebastian",
-        "age": 5,
-        "description": "Miniature Horse",
+        "age": 7,
+        "description": "Date of birth: 05/15/2015. Beloved Miniature Horse.",
         "img":"little-sebastian.jpeg",
-        "logs":[{"typeOfCare": "Medicine", "entry":"gave him medicine"}]
+        "logs":[{"typeOfCare": "Diet", "entry":"He was brought to pasture for an hour."}]
     }               
 ]

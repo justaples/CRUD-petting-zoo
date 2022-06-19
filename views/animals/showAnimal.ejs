@@ -7,9 +7,9 @@
     </div>
     <div class="col" style="border:2px solid black">
         <div >
-            <p style="font-size: 25px;" ><%=animal.name%></p>
+            <p style="font-size: 30px; font-weight: bold;" ><%=animal.name%></p>
             <p style="font-size: 20px;" >Age: <%=animal.age%></p>
-            <p style="font-size: 15px;" >Description: <br><%=animal.description%></p>
+            <p style="font-size: 20px;" >Description: <br><%=animal.description%></p>
             
         </div>
         <div class="row" >
@@ -32,12 +32,11 @@
 
 
 <!-- EDIT ANIMAL MODAL START -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="editModal" tabindex="-1"  aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Edit animal's information</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="modal-title" id="editModalLabel">Edit animal's information</h3>
             </div>
             <div class="modal-body">
                 <form method="POST" action="/animals/<%= id %>?_method=PUT">
@@ -46,7 +45,7 @@
                     <h5><br>Age:</h5>
                     <input name="age" type="number"value="<%=animal.age%>">
                     <h5><br>Description:</h5>
-                    <textarea id="w3review" name="description" rows="4" cols="50"><%=animal.description%>
+                    <textarea name="description" rows="4" cols="50"><%=animal.description%>
                         </textarea>
                     <!-- <input name="description" type="text"value="< %=animal.description%>"> -->
                     
@@ -103,7 +102,7 @@
             <textarea name="entry" class="form-control" id="logEntry" rows="3"></textarea>
         </div>
         <!-- <textarea name="entry"></textarea> -->
-        <input type="submit" value="Add Log">
+        <input class="btn btn-dark" type="submit" value="Add Log">
         </form>
     </div>
 </div>
@@ -138,7 +137,7 @@
             <tr>
         </table>
         <% } else { %>
-            <h1>no logs yet</h1>
+            <h3>No logs </h3>
         <%}%>
     </div>
 </div>
