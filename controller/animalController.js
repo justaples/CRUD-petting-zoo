@@ -12,7 +12,7 @@ const getAllAnimals = (req,res) =>{
             res.status(400).json(err)
             return
         }
-        res.render('animals/allAnimals', {a, title: "Forrest & Friends Petting Zoo"})
+        res.render('animals/allAnimals', {a, title: "Forrest & Friends Petting Zoo", topTitle: "Forrest & Friends Petting Zoo"})
     })
 }
 
@@ -110,7 +110,7 @@ const showAnimal = (req,res) =>{
         Animal.find was added below so the header can display all animals on the dropdown
         =======================================================================*/ 
         Animal.find({},(err, a) =>{
-            res.render('animals/showAnimal', {a, animal, id:req.params.animalId, title: "Forrest & Friends Petting Zoo"})
+            res.render('animals/showAnimal', {a, animal, id:req.params.animalId, topTitle: "Forrest & Friends Petting Zoo", title:`${animal.name}'s details`})
         })
     })
 }
@@ -136,7 +136,6 @@ const deleteAnimal = (req,res) =>{
         res.redirect('/animals')
     })
 }
-
 
 /*=======================================================================
 Exporting all functions
