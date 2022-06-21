@@ -48,7 +48,7 @@ Handling the upload of files into the app: Max Size, File type
 =======================================================================*/ 
 const upload = multer({
     storage: storage,
-    limits: {fileSize: 1000000},
+    limits: {fileSize: 10000000},
     fileFilter: function(req, file, cb){
         checkFileType(file, cb)
     }
@@ -79,11 +79,11 @@ const createAnimal = (req,res) =>{
         Animal.find({}, (e,a)=>{
             if(err){
                 res.render('animals/newAnimal', 
-                {msg:err, a, title: "Forrest & Friends Petting Zoo"})
+                {msg:err, a, title: "Forrest & Friends Petting Zoo", topTitle: "Forrest & Friends Petting Zoo"})
             }else{
                 if(req.file == undefined){
                     res.render('animals/newAnimal', 
-                    {msg: 'Please select a picture!', a, title: "Forrest & Friends Petting Zoo"})
+                    {msg: 'Please select a picture!', a, title: "Forrest & Friends Petting Zoo", topTitle: "Forrest & Friends Petting Zoo"})
                 }
             }
             try{
@@ -93,7 +93,7 @@ const createAnimal = (req,res) =>{
                     description: req.body.description,
                     img: req.file.filename,
                 })
-                newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo"})
+                newAnimal.save(() => res.redirect('/animals'), {title: "Forrest & Friends Petting Zoo", topTitle: "Forrest & Friends Petting Zoo"})
             } catch (err){
                 console.log(err)
             }
