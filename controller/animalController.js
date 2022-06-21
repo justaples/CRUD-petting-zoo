@@ -25,7 +25,7 @@ const newAnimal = (req,res) =>{
             res.status(400).json(err)
             return
         }
-        res.render('animals/newAnimal', {a, title: "Forrest & Friends Petting Zoo"})
+        res.render('animals/newAnimal', {a, title: "Forrest & Friends Petting Zoo", topTitle: "Forrest & Friends Petting Zoo"})
     })
 }
 
